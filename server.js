@@ -3,6 +3,7 @@
  */
 
 var mosca = require('mosca');
+var mongoose = require('mongoose');
 
 var pub_sub_settings = {
     type: 'mongo',
@@ -35,28 +36,24 @@ server.published = function (packet, client, cb) {
 
     console.log('newPacket ', newPacket);
     server.publish(newPacket, cb);
-}
+};
 
 server.on('clientConnected', function (client) {
-    console.log('Client connected', client.id);
-});
-
-server.on('published', function (packet, client) {
-    console.log('Published : ', packet.payload);
+    console.log('Client connected: ', client.id);
 });
 
 server.on('subscribed', function (topic, client) {
-    console.log('Subscribed : ', topic);
+    console.log('Subscribed: ', topic);
 });
 
 server.on('unsubscribed', function (topic, client) {
-    console.log('Unsubscribed : ', topic);
+    console.log('Unsubscribed: ', topic);
 });
 
 server.on('clientDisconnecting', function (client) {
-    console.log('Client disconnecting : ', client.id);
+    console.log('Client disconnecting: ', client.id);
 });
 
 server.on('clientDisconnected', function (client) {
-    console.log('Client disconnected : ', client.id);
+    console.log('Client disconnected: ', client.id);
 });
