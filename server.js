@@ -6,14 +6,15 @@ var mosca = require('mosca');
 var mongoose = require('mongoose');
 
 var pub_sub_settings = {
-    type: 'mongo',
-    url: 'mongodb://localhost:27017/iqhouse',
-    pubsubCollection: 'iqhouseCollections',
-    mongo: {}
+    // type: 'mongo',
+    // url: 'mongodb://localhost:27017/iqhouse',
+    // pubsubCollection: 'iqhouseCollections',
+    // mongo: {}
 };
 
 var settings = {
     port: 1883,
+    host: '192.168.43.78',
     backend: pub_sub_settings
 };
 
@@ -34,7 +35,6 @@ server.published = function (packet, client, cb) {
         qos: packet.qos
     };
 
-    console.log('newPacket ', newPacket);
     server.publish(newPacket, cb);
 };
 

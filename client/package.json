@@ -1,0 +1,14 @@
+{
+  "name": "iqhouse-client",
+  "version": "1.0.0",
+  "description": "iqhouse-client",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^2.1.3"
+  }
+}
