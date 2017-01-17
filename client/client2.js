@@ -4,8 +4,8 @@
 
 var mqtt = require('mqtt');
 
-var client = mqtt.connect('mqtt://192.168.43.78:1883');
-client.subscribe('microcimate');
+var client = mqtt.connect('mqtt://localhost:1883');
+client.subscribe('clientConnected');
 
 client.on('message', function (topic, message) {
     var text = message.toString();

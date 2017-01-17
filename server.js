@@ -4,18 +4,19 @@
 
 var mosca = require('mosca');
 var mongoose = require('mongoose');
+var request = require('request');
 
-var pub_sub_settings = {
-    // type: 'mongo',
-    // url: 'mongodb://localhost:27017/iqhouse',
-    // pubsubCollection: 'iqhouseCollections',
-    // mongo: {}
-};
+// var pub_sub_settings = {
+//     type: 'mongo',
+//     url: 'mongodb://localhost:27017/iqhouse',
+//     pubsubCollection: 'iqhouseCollections',
+//     mongo: {}
+// };
 
 var settings = {
     port: 1883,
-    host: '192.168.43.78',
-    backend: pub_sub_settings
+    // host: '192.168.43.78',
+    // backend: pub_sub_settings
 };
 
 var server = new mosca.Server(settings);
@@ -40,6 +41,9 @@ server.published = function (packet, client, cb) {
 
 server.on('clientConnected', function (client) {
     console.log('Client connected: ', client.id);
+    request('http://localhost:8000', function (error, response, body) {
+      console.log(body);
+    })
 });
 
 server.on('subscribed', function (topic, client) {

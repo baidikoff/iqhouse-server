@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/baidikoff/iqhouse-server#readme",
   "dependencies": {
-    "mosca": "^2.2.0"
+    "express": "^4.14.0",
+    "mosca": "^2.2.0",
+    "request": "^2.79.0"
   }
 }
